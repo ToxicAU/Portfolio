@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entendendo o Box Model no CSS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        
+        body {
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: rgba(223, 223, 223, 0.815);
+            color: #333;
+            padding: 20px;
+            text-align: left;
+        }
+
+        nav {
+            background: rgba(160, 160, 160, 0.76);
+            padding: 10px;
+            text-align: center;
+        }
+        
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #393e46;
+            border-bottom: 2px solid #00adb5;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .exemplo {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-family: monospace;
+        }
+
+        .exemplo h3 {
+            color: #00adb5;
+        }
+
+        .note {
+            color: #888;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+
+        .visual-exemplos {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .visual-exemplos h2 {
+            margin-bottom: 15px;
+            color: #393e46;
+        }
+
+        .visual-exemplos img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            position: static;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Entendendo o Box Model no CSS</h1>
+</header>
+
+<nav>
+    <a href="index.html">Página Inicial</a>
+    <a href="#o-que-e">O que é Box Model</a>
+    <a href="#componentes">Componentes do Box Model</a>
+    <a href="#exemplo-pratico">Exemplo Prático</a>
+</nav>
+
+<div class="container">
+    <section id="o-que-e">
+        <h2>O que é o Box Model?</h2>
+        <p>No CSS, o "Box Model" é o modelo de layout que define como os elementos em uma página web ocupam espaço e interagem entre si. Cada elemento em HTML é visto como uma caixa retangular composta por quatro partes: conteúdo, padding (preenchimento), borda e margem.</p>
+        <ul>
+            <li><strong>Conteúdo:</strong> Área onde o conteúdo do elemento, como texto ou imagem, é exibido.</li>
+            <li><strong>Padding:</strong> Espaço entre o conteúdo e a borda do elemento.</li>
+            <li><strong>Borda:</strong> Linha que envolve o padding e o conteúdo, podendo ter estilos variados.</li>
+            <li><strong>Margem:</strong> Espaço externo à borda, que separa o elemento dos demais.</li>
+        </ul>
+    </section>
+
+    <section id="componentes">
+        <h2>Componentes do Box Model</h2>
+        <p>Vamos detalhar cada componente do Box Model:</p>
+        
+        <div class="exemplo">
+            <h3>Conteúdo</h3>
+            <p>A área de conteúdo, onde o conteúdo real do elemento é exibido. O tamanho dessa área pode ser ajustado com as propriedades <code>width</code> e <code>height</code>.</p>
+        </div>
+        
+        <div class="exemplo">
+            <h3>Padding (Preenchimento)</h3>
+            <p>O padding cria um espaço interno ao redor do conteúdo do elemento. Ele pode ser ajustado individualmente para cada lado com as propriedades <code>padding-top</code>, <code>padding-right</code>, <code>padding-bottom</code> e <code>padding-left</code>.</p>
+        </div>
+        
+        <div class="exemplo">
+            <h3>Borda</h3>
+            <p>A borda é a linha que envolve o padding e o conteúdo. Ela pode ser personalizada com as propriedades <code>border-width</code>, <code>border-style</code> e <code>border-color</code>.</p>
+        </div>
+        
+        <div class="exemplo">
+            <h3>Margem</h3>
+            <p>A margem é o espaço externo à borda, utilizado para separar o elemento de outros elementos na página. As propriedades <code>margin-top</code>, <code>margin-right</code>, <code>margin-bottom</code> e <code>margin-left</code> controlam cada lado da margem.</p>
+        </div>
+    </section>
+
+    <section id="exemplo-pratico">
+        <h2>Exemplo Prático do Box Model</h2>
+        <p>Vamos ver um exemplo prático para visualizar como o Box Model afeta o layout de um elemento:</p>
+
+        <div class="exemplo">
+            <h3>Exemplo de Box Model</h3>
+            <pre>
+/* CSS */
+.elemento {
+    width: 200px;
+    height: 100px;
+    padding: 20px;
+    border: 5px solid #00adb5;
+    margin: 10px;
+    background-color: #f4f4f4;
+}
+            </pre>
+            <p>No exemplo acima, o elemento terá um conteúdo de 200px de largura e 100px de altura, com 20px de padding, 5px de borda e 10px de margem em volta.</p>
+        </div>
+    </section>
+
+    <div class="visual-exemplos">
+        <h2>Exemplos Visuais</h2>
+        <img src="box-model-example.png" alt="Exemplo visual do Box Model">
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Nosso Portfólio. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>

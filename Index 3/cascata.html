@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilos em Cascata no CSS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        
+        body {
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: rgba(223, 223, 223, 0.815);
+            color: #fff;
+            padding: 20px;
+            text-align: left;
+        }
+
+        nav {
+            background: rgba(160, 160, 160, 0.76);
+            padding: 10px;
+            text-align: center;
+        }
+        
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #393e46;
+            border-bottom: 2px solid #00adb5;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .exemplo {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-family: monospace;
+        }
+
+        .exemplo h3 {
+            color: #00adb5;
+        }
+
+        .note {
+            color: #888;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            position: static;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .visual-exemplos {
+            margin-top: 30px;
+        }
+
+        .visual-exemplos h2 {
+            margin-bottom: 15px;
+            color: #393e46;
+        }
+
+        .visual-exemplos img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Entendendo o Conceito de Cascata no CSS</h1>
+</header>
+
+<nav>
+    <a href="index.html">Página Inicial</a>
+    <a href="#especificidade">Especificidade</a>
+    <a href="#heranca">Herança</a>
+    <a href="#importancia">Importância</a>
+    <a href="#exemplos">Exemplos Práticos</a>
+    <a href="#exemplosvisuais">Exemplos Visuais</a>
+</nav>
+
+<div class="container">
+    <section id="especificidade">
+        <h2>1. Especificidade</h2>
+        <p>A especificidade é a forma como o CSS determina quais regras de estilo aplicar quando várias regras poderiam ser aplicadas a um elemento. Cada seletor tem uma "força" diferente, dependendo de sua especificidade:</p>
+        <ul>
+            <li>Seletores de tipo (ex.: <code>p</code>, <code>h1</code>) têm uma especificidade mais baixa.</li>
+            <li>Classes e pseudo-classes (ex.: <code>.classe</code>, <code>:hover</code>) têm uma especificidade média.</li>
+            <li>IDs (ex.: <code>#id</code>) têm a especificidade mais alta.</li>
+        </ul>
+
+        <div class="exemplo">
+            <h3>Exemplo de Especificidade</h3>
+            <pre>
+/* CSS */
+#menu {
+    color: red;
+}
+.menu-item {
+    color: blue;
+}
+p {
+    color: green;
+}
+            </pre>
+            <p>Neste exemplo, o texto em um elemento com o ID <code>menu</code> será vermelho, enquanto o texto em elementos com a classe <code>menu-item</code> será azul. Parágrafos simples (<code>p</code>) terão texto verde.</p>
+        </div>
+    </section>
+
+    <section id="heranca">
+        <h2>2. Herança</h2>
+        <p>No CSS, algumas propriedades são herdadas de elementos pai para elementos filhos. Propriedades como <code>font-size</code>, <code>color</code> e <code>font-family</code> são frequentemente herdadas. Propriedades como <code>border</code> e <code>padding</code>, no entanto, não são.</p>
+        
+        <div class="exemplo">
+            <h3>Exemplo de Herança</h3>
+            <pre>
+/* CSS */
+body {
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+p {
+    font-size: 18px;
+}
+            </pre>
+            <p>Aqui, o corpo da página terá texto preto com a fonte Arial. Todos os parágrafos também herdarão o estilo do <code>body</code> e terão tamanho de fonte de 18px.</p>
+        </div>
+    </section>
+
+    <section id="importancia">
+        <h2>3. Importância</h2>
+        <p>Quando várias regras com a mesma especificidade competem entre si, a ordem de definição no CSS define qual estilo será aplicado. Contudo, podemos usar a regra <code>!important</code> para dar prioridade máxima a um estilo, embora isso seja recomendado apenas em casos especiais.</p>
+        
+        <div class="exemplo">
+            <h3>Exemplo de Importância</h3>
+            <pre>
+/* CSS */
+p {
+    color: blue !important;
+}
+div p {
+    color: red;
+}
+            </pre>
+            <p>Neste exemplo, o parágrafo será azul devido ao uso de <code>!important</code>, ignorando outras regras aplicadas ao elemento.</p>
+            <p class="note">Nota: O uso excessivo de <code>!important</code> deve ser evitado, pois dificulta a manutenção do código.</p>
+        </div>
+    </section>
+
+    <section id="exemplos">
+        <h2>4. Exemplos Práticos de Cascata</h2>
+        <p>Para entender melhor, abaixo estão exemplos práticos demonstrando como a cascata afeta a aplicação de estilos:</p>
+
+        <div class="exemplo">
+            <h3>Exemplo Prático 1</h3>
+            <pre>
+/* CSS */
+p {
+    color: green;
+}
+#especial {
+    color: purple;
+}
+div p {
+    color: orange;
+}
+            </pre>
+            <p>Um parágrafo dentro de uma <code>div</code> terá cor laranja, a menos que tenha um ID específico (como <code>#especial</code>), onde a cor roxa será aplicada devido à especificidade.</p>
+        </div>
+    </section>
+
+
+    <div class="visual-exemplos">
+        <h2>Exemplos Visuais</h2>
+        <center><h1><font color="purple">Olá Mundo</font></h1></center>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Nosso Portfólio. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
